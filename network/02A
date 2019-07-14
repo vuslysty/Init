@@ -1,0 +1,12 @@
+# Exercise 2A
+# Identify and display the Ethernet interface characteristics:
+# (a) Identify broadcast address
+
+# Read and save row from ifconfig, which contain info about this computer's network (networkMask, ipAddress, broadcast)
+configRow=$(ifconfig en0 | grep -E 'inet.{0,}netmask.{0,}broadcast.{0,}');
+
+# Save broadcast address
+bc=$(echo $configRow | cut -d ' ' -f 6);
+
+# Output broadcast address
+echo "$bc"

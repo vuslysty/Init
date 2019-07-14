@@ -1,0 +1,4 @@
+# Exercise 3
+# Identify the MAC address of the Wi-Fi card
+
+ifconfig en2 | grep 'ether' | cut -d ' ' -f 2
