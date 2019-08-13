@@ -1,0 +1,19 @@
+# Exercise 8
+# Find the provider of slash16.org
+
+# Answer:
+# 1) Identify the IP address of the slash16.org
+
+ipAddresses=$(nslookup slash16.org | awk '/Address/ {print}' | awk 'NR > 1 {print $2}')
+
+# Result:
+# 54.192.230.31
+# 54.192.230.162
+# 54.192.230.145
+# 54.192.230.59
+
+# 2) Choose one of ip addresses above and use it in another command (I chosen first),
+#    and find provider name between many words
+
+firstIP=$(echo $ipAddresses | awk 'NR == 1')
+whois $firstIP | awk ' /OrgName/ {print $0}' | awk 'NR == 1 {$1 = "Name of provider:"; print}'
