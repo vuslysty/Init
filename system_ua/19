@@ -1,0 +1,5 @@
+# Exercise 19
+# With the previous command, forbid all others
+
+sudo iptables -P INPUT DROP
+sudo iptables -P OUTPUT DROP

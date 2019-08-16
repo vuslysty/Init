@@ -1,0 +1,38 @@
+# Exercise 16
+# Find the service which makes it possible to run specific tasks following
+# a regular schedule
+
+# Answer:
+# It service named 'crontab' and uses for operate to task manager 'cron'
+# Command that open configuration file: 'crontab -e'
+# For adding task to file you must follow next standard:
+#
+#   * * * * *   <script for running>
+#   - - - - -
+#   | | | | |
+#   | | | | - Day of week (0 - 7) (Sunday = 0 or 7)
+#   | | | --- Month (1 - 12)
+#   | | --- Day of month (1 - 31)
+#   | ---- Hour (0 - 23)
+#   ----- Minute (0 - 59)
+#
+#   Operators:
+#   Asterisk(*) - all possible values for wield;
+#   Comma(,)    - set list of values, example: "1,5,10,25";
+#   Dash(-)     - set diapason of values, example "1-5" the same as "1,2,3,4,5"
+#   Slash(/)    - frequency operator, example "*/2" - run something each two
+#                 hours, minutes, weeks etc...
+#
+#   For saving your time and make better readable file, you can use special string
+#
+#   Special string    value
+#   @reboot           Runs once when the computer is turned on
+#   @yearly           Runs once a year
+#   @annually         The same as @yearly
+#   @monthly          Runs once a month
+#   @weekly           Runs once a week
+#   @daily            Runs once a day
+#   @midnight         The same as @daily
+#   @hourly           Runs once an hour
+#
+#   example: @weekly apt-get update && apt-get upgrade

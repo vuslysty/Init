@@ -1,0 +1,4 @@
+# Exercise 13
+# Name the command that find currently running processes
+
+ps -ef

@@ -1,0 +1,10 @@
+# Exercise 15
+# Find the command that kills the background command’s process
+
+kill -9 `jobs -p` #    - kill all  (sends SIGKILL signals to all of them)
+
+#  Alternative:
+# disown               - kill last processes
+# kill %[job_id]       - kill process by its job id
+# kill PID             - kill process by its PID
+# pkill [name_pattern] - kill process by its name pattern

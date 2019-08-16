@@ -1,0 +1,8 @@
+# Exercise 10
+# Name the command that lists the partition tables of external devices?
+
+sudo fdisk -l
+
+# other variants:
+# lsblk
+# sudo parted -l
