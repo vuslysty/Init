@@ -1,0 +1,31 @@
+#!/bin/bash
+# Exercise 2
+# Write a script which updates all the package sources, then all the packages, and then
+# logs everything in a file named /var/log/update_script.log. Create a scheduled
+# task for this script, once per week at 4 AM.
+
+function printDashLine {
+	local line="";
+	local i=0;
+	while (( i < 40 ))
+	do
+		line+="–";
+		let "i++";
+	done
+	echo $line
+}
+
+LOG_FILE=/var/log/update_script.log
+
+printDashLine >> $LOG_FILE
+echo "DATE: $(date)" >> $LOG_FILE
+printDashLine >> $LOG_FILE
+echo "UPDATING ALL THE PACKAGE SOURCES..." >> $LOG_FILE
+apt-get update >> $LOG_FILE
+echo -e "\nUPGRADING ALL THE PACKAGES..." >> $LOG_FILE
+apt-get upgrade -y >> $LOG_FILE
+echo -en "\n" >> $LOG_FILE
+
+# then add script to crontab:
+# open crontab in command: sudo crontab -e
+# add row : * 4 * * mon /path_to_script

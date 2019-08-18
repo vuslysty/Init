@@ -1,0 +1,20 @@
+#!/bin/bash
+# Exercise 4
+# Write a script which monitors the modifications made to the /etc/crontab file and
+# sends an e-mail to root if the file is modified. Create a scheduled task to run this
+# script everyday at midnight.
+
+if [ -f ~/.md5hashSum ]
+then
+	if ! md5sum -c ~/.md5hashSum
+	then
+		echo "/etc/crontab was modificated" | mail -s "File modification" root
+		md5sum ~/testFile > ~/.md5hashSum
+	fi
+else
+	md5sum ~/testFile > ~/.md5hashSum
+fi &> /dev/null
+
+# then add script to crontab:
+# open crontab in command: crontab -e
+# add row : @midnight /path_to_script

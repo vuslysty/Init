@@ -2,3 +2,5 @@
 # Figure out the PID of the SSHD service.
 
 /etc/init.d/ssh status | grep 'PID' | awk '{print $3}'
+
+# or cat /var/run/sshd.pid

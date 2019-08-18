@@ -1,0 +1,25 @@
+#!/bin/bash
+# Exercise 3
+# Write a script which displays the list of files from the folder given as parameter,
+# sorted by size.
+
+flag=0
+
+while [ -n "$1" ]
+do
+	if [ $flag -eq 1 ]
+	then 
+		echo -ne "\n"
+	else 
+		let "flag = 1"
+	fi
+
+	if [ -d "$1" ]
+	then
+		echo "$1:"
+		ls -S $1
+	else
+		echo -e "$1: file is not directory"
+	fi
+	shift
+done
